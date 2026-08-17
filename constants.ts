@@ -26,13 +26,13 @@ export const LAB_WHATSAPP_NUMBER = "919876543210";
 export const LAB_ADDRESS = "Sun Life Path Lab, Palam / Dwarka, New Delhi";
 
 export const NAV_LINKS = [
-  { label: 'TEST DIRECTORY', href: '#test-directory' },
-  { label: 'PACKAGES', href: '#packages' },
-  { label: 'CUSTOM ESTIMATOR', href: '#calculator' },
-  { label: 'IMAGING', href: '#imaging' },
-  { label: 'HOW IT WORKS', href: '#process' },
-  { label: 'ABOUT', href: '#about' },
-  { label: 'CONTACT & MAP', href: '#contact' },
+  { label: 'Tests', href: '#test-directory' },
+  { label: 'Packages', href: '#packages' },
+  { label: 'Calculator', href: '#calculator' },
+  { label: 'Imaging', href: '#imaging' },
+  { label: 'How It Works', href: '#process' },
+  { label: 'About', href: '#about' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export const DIAGNOSTIC_TESTS: DiagnosticTest[] = [

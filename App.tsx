@@ -168,7 +168,7 @@ const App: React.FC = () => {
         bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-slate-200/90 dark:border-slate-800/90
         ${scrolled ? 'py-2 sm:py-2.5 shadow-md' : 'py-2.5 sm:py-3.5 shadow-xs'}
       `}>
-        <div className="container mx-auto px-4 md:px-6 flex items-center justify-between gap-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
           <a 
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
@@ -177,14 +177,14 @@ const App: React.FC = () => {
             <Logo size="md" />
           </a>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-3.5 xl:gap-5">
+          {/* Desktop Nav Links (Visible on xl screens and above >= 1280px) */}
+          <div className="hidden xl:flex items-center gap-4 2xl:gap-6">
             {NAV_LINKS.map(link => (
               <a 
                 key={link.label} 
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
-                className="text-[11px] xl:text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors tracking-wide relative group cursor-pointer uppercase whitespace-nowrap"
+                className="text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors tracking-wide relative group cursor-pointer uppercase whitespace-nowrap"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-amber-500 group-hover:w-full transition-all duration-300" />
@@ -192,8 +192,8 @@ const App: React.FC = () => {
             ))}
           </div>
 
-          {/* Desktop Action Buttons */}
-          <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 shrink-0">
+          {/* Desktop Action Buttons (Visible on xl screens >= 1280px) */}
+          <div className="hidden xl:flex items-center gap-2.5 shrink-0">
             {/* Upload Prescription Button */}
             <button
               onClick={() => setIsPrescriptionModalOpen(true)}
@@ -203,30 +203,15 @@ const App: React.FC = () => {
               <span>Upload Rx</span>
             </button>
 
-            {/* Sample Report Preview (xl screens) */}
+            {/* Sample Report Preview (2xl screens) */}
             <button
               onClick={() => setIsSampleReportModalOpen(true)}
-              className="hidden xl:flex px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-850 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold transition-all items-center gap-1.5 border border-slate-200 dark:border-slate-700 cursor-pointer whitespace-nowrap"
+              className="hidden 2xl:flex px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-850 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold transition-all items-center gap-1.5 border border-slate-200 dark:border-slate-700 cursor-pointer whitespace-nowrap"
             >
               <FileText className="w-3.5 h-3.5 text-sterile-cyan" />
               <span>Sample Report</span>
             </button>
 
-            {/* Google Profile Link Badge (2xl screens) */}
-            <a
-              href={GOOGLE_PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden 2xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-850 hover:bg-amber-500/10 text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition-all group whitespace-nowrap"
-              title="View on Google"
-            >
-              <span className="flex items-center text-amber-500">
-                <Star className="w-3.5 h-3.5 fill-amber-500" />
-              </span>
-              <span>Google Verified</span>
-              <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-amber-500 transition-colors" />
-            </a>
-            
             {/* Theme Toggle */}
             <button 
               onClick={toggleTheme}
@@ -239,22 +224,31 @@ const App: React.FC = () => {
             {/* Book Home Visit CTA */}
             <button 
               onClick={() => setIsBookingModalOpen(true)}
-              className="px-3.5 xl:px-4 py-2 bg-gradient-to-r from-amber-500 to-sterile-cyan hover:from-amber-600 hover:to-cyan-600 text-white font-bold text-xs rounded-full transition-all duration-300 shadow-md shadow-amber-500/20 flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+              className="px-4 py-2 bg-gradient-to-r from-amber-500 to-sterile-cyan hover:from-amber-600 hover:to-cyan-600 text-white font-bold text-xs rounded-full transition-all duration-300 shadow-md shadow-amber-500/20 flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
             >
               <CalendarCheck className="w-3.5 h-3.5" />
               <span>Book Home Visit</span>
             </button>
           </div>
 
-          {/* Mobile Menu Header Controls */}
-          <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+          {/* Compact / Mobile / Tablet Header Controls (< 1280px) */}
+          <div className="flex items-center gap-2 xl:hidden shrink-0">
             <button
               onClick={() => setIsPrescriptionModalOpen(true)}
-              className="px-2.5 py-1.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-xs font-bold flex items-center gap-1 cursor-pointer"
+              className="px-2.5 sm:px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-xs font-bold flex items-center gap-1 cursor-pointer whitespace-nowrap"
             >
               <UploadCloud className="w-3.5 h-3.5" />
-              <span>Rx</span>
+              <span>Upload Rx</span>
             </button>
+
+            <button 
+              onClick={() => setIsBookingModalOpen(true)}
+              className="hidden sm:flex px-3 py-1.5 bg-gradient-to-r from-amber-500 to-sterile-cyan text-white font-bold text-xs rounded-full shadow-sm items-center gap-1 cursor-pointer whitespace-nowrap"
+            >
+              <CalendarCheck className="w-3.5 h-3.5" />
+              <span>Book Visit</span>
+            </button>
+
             <button 
               onClick={toggleTheme}
               className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 cursor-pointer"
@@ -262,6 +256,7 @@ const App: React.FC = () => {
             >
               {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
             </button>
+
             <button 
               className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:text-amber-500 transition-colors cursor-pointer"
               onClick={() => setIsMobileMenuOpen(true)}
@@ -281,7 +276,7 @@ const App: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[80] bg-white dark:bg-slate-950 flex flex-col lg:hidden"
+            className="fixed inset-0 z-[80] bg-white dark:bg-slate-950 flex flex-col xl:hidden"
           >
             {/* Drawer Top Header Bar */}
             <div className="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-md shrink-0">
