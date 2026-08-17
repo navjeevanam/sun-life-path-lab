@@ -1,0 +1,8 @@
+{
+  "name": "Sun Life Path Lab Diagnostics",
+  "description": "Premium diagnostic centre offering NABL-standard pathology and advanced imaging services with convenient home collection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

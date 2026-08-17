@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sun Life Path Lab | Advanced Diagnostic Centre</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              obsidian: '#0a0f1d',
+              'navy-dark': '#070b19',
+              'navy-card': '#0f172a',
+              'sterile-cyan': '#0284c7', // Professional Medical Sky Blue
+              'vitality-green': '#10b981', // Emerald-500
+              'plasma-red': '#ef4444',
+              'medical-blue': '#2563eb',
+              'medical-teal': '#0d9488',
+              'sun-amber': '#f59e0b',
+              'sun-gold': '#d97706',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Plus Jakarta Sans', 'sans-serif'],
+              mono: ['JetBrains Mono', 'Space Mono', 'monospace'],
+            },
+            backgroundImage: {
+              'grid-pattern': "linear-gradient(to right, rgba(30, 41, 59, 0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(30, 41, 59, 0.4) 1px, transparent 1px)",
+              'grid-pattern-light': "linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px)",
+            },
+            backgroundSize: {
+              'grid-pattern': "40px 40px",
+            }
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background-color: #070b19; 
+        color: #f1f5f9;
+        overflow-x: hidden;
+        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+      }
+      .dark body {
+        background-color: #070b19;
+        color: #f1f5f9;
+      }
+      html:not(.dark) body {
+        background-color: #f8fafc;
+        color: #0f172a;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      html:not(.dark) ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #0284c7;
+        border-radius: 4px;
+      }
+      .glass-modal {
+        background: rgba(15, 23, 42, 0.96);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(2, 132, 199, 0.25);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      }
+      html:not(.dark) .glass-modal {
+         background: rgba(255, 255, 255, 0.98);
+         border: 1px solid rgba(226, 232, 240, 0.9);
+         box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.5.0",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7",
+    "three": "https://esm.sh/three@^0.182.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.34.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
