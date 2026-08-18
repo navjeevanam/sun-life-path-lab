@@ -12,19 +12,19 @@ export const Logo: React.FC<LogoProps> = ({
   className = '' 
 }) => {
   const iconSizes = {
-    sm: 'w-8 h-8',
-    md: 'w-10 h-10',
-    lg: 'w-12 h-12',
+    sm: 'w-7 h-7 sm:w-8 sm:h-8',
+    md: 'w-8 h-8 sm:w-10 sm:h-10',
+    lg: 'w-10 h-10 sm:w-12 sm:h-12',
   };
 
   const textSizes = {
-    sm: 'text-base',
-    md: 'text-lg md:text-xl',
-    lg: 'text-xl md:text-2xl',
+    sm: 'text-sm sm:text-base',
+    md: 'text-base sm:text-lg md:text-xl',
+    lg: 'text-lg sm:text-xl md:text-2xl',
   };
 
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
+    <div className={`flex items-center gap-2 sm:gap-3 select-none shrink-0 ${className}`}>
       {/* Sun Life Path Lab Emblem */}
       <div className={`relative ${iconSizes[size]} flex items-center justify-center shrink-0`}>
         {/* Glow backdrop */}
@@ -82,7 +82,7 @@ export const Logo: React.FC<LogoProps> = ({
 
       {/* Brand Typography */}
       <div className="flex flex-col">
-        <div className="flex items-center gap-1.5 leading-none">
+        <div className="flex items-center gap-1 sm:gap-1.5 leading-none">
           <span className={`font-display font-black tracking-wide text-slate-900 dark:text-white ${textSizes[size]}`}>
             SUN LIFE
           </span>
@@ -91,7 +91,7 @@ export const Logo: React.FC<LogoProps> = ({
           </span>
         </div>
         {showSubtitle && (
-          <span className="text-[8.5px] md:text-[9.5px] text-slate-500 dark:text-slate-400 font-semibold tracking-widest uppercase mt-0.5">
+          <span className="hidden sm:block text-[8.5px] md:text-[9.5px] text-slate-500 dark:text-slate-400 font-semibold tracking-widest uppercase mt-0.5 whitespace-nowrap">
             Pathology & Diagnostics
           </span>
         )}

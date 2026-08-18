@@ -168,7 +168,7 @@ const App: React.FC = () => {
         bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-slate-200/90 dark:border-slate-800/90
         ${scrolled ? 'py-2 sm:py-2.5 shadow-md' : 'py-2.5 sm:py-3.5 shadow-xs'}
       `}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-3">
           <a 
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
@@ -232,18 +232,20 @@ const App: React.FC = () => {
           </div>
 
           {/* Compact / Mobile / Tablet Header Controls (< 1280px) */}
-          <div className="flex items-center gap-2 xl:hidden shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 xl:hidden shrink-0">
             <button
               onClick={() => setIsPrescriptionModalOpen(true)}
-              className="px-2.5 sm:px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-xs font-bold flex items-center gap-1 cursor-pointer whitespace-nowrap"
+              className="px-2 sm:px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-xs font-bold flex items-center gap-1 cursor-pointer whitespace-nowrap"
+              title="Upload Doctor Prescription"
             >
               <UploadCloud className="w-3.5 h-3.5" />
-              <span>Upload Rx</span>
+              <span className="hidden xs:inline sm:inline">Upload Rx</span>
+              <span className="xs:hidden sm:hidden">Rx</span>
             </button>
 
             <button 
               onClick={() => setIsBookingModalOpen(true)}
-              className="hidden sm:flex px-3 py-1.5 bg-gradient-to-r from-amber-500 to-sterile-cyan text-white font-bold text-xs rounded-full shadow-sm items-center gap-1 cursor-pointer whitespace-nowrap"
+              className="hidden md:flex px-3 py-1.5 bg-gradient-to-r from-amber-500 to-sterile-cyan text-white font-bold text-xs rounded-full shadow-sm items-center gap-1 cursor-pointer whitespace-nowrap"
             >
               <CalendarCheck className="w-3.5 h-3.5" />
               <span>Book Visit</span>
@@ -251,18 +253,19 @@ const App: React.FC = () => {
 
             <button 
               onClick={toggleTheme}
-              className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-amber-500 transition-colors cursor-pointer shrink-0"
               aria-label="Toggle Theme"
             >
               {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
             </button>
 
+            {/* Prominent Hamburger Menu Button */}
             <button 
-              className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:text-amber-500 transition-colors cursor-pointer"
+              className="p-2 sm:p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 hover:bg-amber-500/10 hover:border-amber-500/40 hover:text-amber-600 dark:hover:text-amber-400 transition-all cursor-pointer flex items-center justify-center shrink-0 min-w-[36px] min-h-[36px]"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open Navigation Menu"
             >
-              <Menu className="w-5 h-5" />
+              <Menu className="w-5 h-5 text-slate-900 dark:text-slate-100" />
             </button>
           </div>
         </div>
@@ -276,7 +279,7 @@ const App: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[80] bg-white dark:bg-slate-950 flex flex-col xl:hidden"
+            className="fixed inset-0 z-[100] bg-white dark:bg-slate-950 flex flex-col xl:hidden"
           >
             {/* Drawer Top Header Bar */}
             <div className="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-md shrink-0">
