@@ -53,19 +53,14 @@ export const SampleReportModal: React.FC<SampleReportModalProps> = ({
         <div className="border-b-2 border-slate-900 pb-4 mb-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <div className="flex items-center gap-2 mb-1">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center text-white font-black text-sm">
-                  SL
-                </div>
-                <h2 className="text-xl font-display font-black tracking-tight text-slate-900">
-                  SUN LIFE PATH LAB
-                </h2>
+              <div className="mb-2">
+                <Logo size="sm" showSubtitle={false} />
               </div>
               <p className="text-[11px] text-slate-600 font-medium">
-                NABL Accredited & Certified Diagnostic Pathology Laboratory
+                Approved by Govt. of NCT Delhi • A.E.R.B. Approved • ISO 9001:2008 Certified Lab
               </p>
               <p className="text-[10px] text-slate-500">
-                Palam / Dwarka, New Delhi • Helpline: {LAB_PHONE_NUMBER}
+                Plot No.2, Main Mkt. Ranhola Road, Vikas Nagar, Uttam Nagar, New Delhi-110059 • Helpline: {LAB_PHONE_NUMBER}
               </p>
             </div>
 

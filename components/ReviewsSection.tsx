@@ -91,26 +91,26 @@ export const ReviewsSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-2 flex flex-wrap gap-2">
+              <div className="pt-2 flex flex-col sm:flex-row gap-2 w-full">
                 <a
                   href={GOOGLE_PROFILE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 font-bold text-xs transition-all flex items-center gap-1.5 border border-amber-500/30"
+                  className="w-full sm:w-auto px-3.5 py-2.5 sm:py-1.5 rounded-xl sm:rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 font-bold text-xs transition-all flex items-center justify-center gap-1.5 border border-amber-500/30 min-h-[38px]"
                 >
-                  <Star className="w-3.5 h-3.5 fill-amber-500" />
-                  <span>Google Profile</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <Star className="w-3.5 h-3.5 fill-amber-500 shrink-0" />
+                  <span>Write Review & Feedback</span>
+                  <ExternalLink className="w-3 h-3 shrink-0" />
                 </a>
 
                 <a
                   href={GOOGLE_MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-semibold text-xs transition-all flex items-center gap-1.5"
+                  className="w-full sm:w-auto px-3.5 py-2.5 sm:py-1.5 rounded-xl sm:rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-semibold text-xs transition-all flex items-center justify-center gap-1.5 min-h-[38px]"
                 >
-                  <MapPin className="w-3.5 h-3.5 text-sky-500" />
-                  <span>Maps Link</span>
+                  <MapPin className="w-3.5 h-3.5 text-sky-500 shrink-0" />
+                  <span>View Location on Maps</span>
                 </a>
               </div>
             </div>
@@ -119,10 +119,10 @@ export const ReviewsSection: React.FC = () => {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex gap-2 overflow-x-auto pb-3 mb-6 no-scrollbar touch-pan-x">
           <button
             onClick={() => setActiveFilter('all')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap min-h-[36px] shrink-0 ${
               activeFilter === 'all'
                 ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
                 : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
@@ -133,7 +133,7 @@ export const ReviewsSection: React.FC = () => {
           
           <button
             onClick={() => setActiveFilter('home_collection')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap min-h-[36px] shrink-0 ${
               activeFilter === 'home_collection'
                 ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
                 : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
@@ -144,7 +144,7 @@ export const ReviewsSection: React.FC = () => {
 
           <button
             onClick={() => setActiveFilter('package')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap min-h-[36px] shrink-0 ${
               activeFilter === 'package'
                 ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
                 : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
@@ -155,7 +155,7 @@ export const ReviewsSection: React.FC = () => {
 
           <button
             onClick={() => setActiveFilter('doctor')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap min-h-[36px] shrink-0 ${
               activeFilter === 'doctor'
                 ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
                 : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
@@ -166,7 +166,7 @@ export const ReviewsSection: React.FC = () => {
 
           <button
             onClick={() => setActiveFilter('fast_reports')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap min-h-[36px] shrink-0 ${
               activeFilter === 'fast_reports'
                 ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
                 : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
@@ -242,32 +242,33 @@ export const ReviewsSection: React.FC = () => {
         </div>
 
         {/* Bottom Actions Banner */}
-        <div className="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+        <div className="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-5">
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 text-center lg:text-left">
             <Award className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>Have you had a diagnostic visit with us recently?</span>
+            <span>Have you had a diagnostic visit with us recently? Share your experience!</span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
             <a
               href={GOOGLE_PROFILE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-xs font-bold transition-all shadow-md shadow-amber-500/20"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-2.5 rounded-xl sm:rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-amber-500/20 min-h-[46px] cursor-pointer"
             >
-              <Star className="w-3.5 h-3.5 fill-white" />
-              Write a Google Review
-              <ExternalLink className="w-3 h-3 opacity-80" />
+              <Star className="w-4 h-4 fill-white shrink-0" />
+              <span>Write a Google Review</span>
+              <ExternalLink className="w-3.5 h-3.5 opacity-80 shrink-0" />
             </a>
 
             <a
               href={GOOGLE_MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-2.5 rounded-xl sm:rounded-full bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-semibold transition-all min-h-[46px] cursor-pointer"
             >
-              <MapPin className="w-3.5 h-3.5 text-sky-500" />
-              View Location on Google Maps
+              <MapPin className="w-4 h-4 text-sky-500 shrink-0" />
+              <span>View Location on Google Maps</span>
+              <ExternalLink className="w-3.5 h-3.5 opacity-60 shrink-0" />
             </a>
           </div>
         </div>

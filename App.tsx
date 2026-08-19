@@ -5,7 +5,7 @@ import {
   FlaskConical, Activity, ArrowRight, ShieldCheck, 
   Stethoscope, Send, CalendarCheck, Sun, Moon,
   Clock, Microscope, Heart, ExternalLink, Star, Navigation,
-  UploadCloud, FileText, CheckCircle2, Search, Sparkles
+  UploadCloud, FileText, CheckCircle2, Search, Sparkles, Mail
 } from 'lucide-react';
 import HeroScene from './components/HeroScene';
 import ServiceCard from './components/ServiceCard';
@@ -144,7 +144,43 @@ const App: React.FC = () => {
     setIsBookingModalOpen(false);
   };
 
+  const handleExploreTests = (searchTerm?: string) => {
+    setIsMobileMenuOpen(false);
+    const element = document.querySelector('#test-directory');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        const searchInput = document.getElementById('test-search-input') as HTMLInputElement | null;
+        if (searchInput) {
+          searchInput.focus();
+          if (searchTerm) {
+            const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+            if (nativeInputValueSetter) {
+              nativeInputValueSetter.call(searchInput, searchTerm);
+              searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            } else {
+              searchInput.value = searchTerm;
+            }
+          }
+          // Visual highlight ring effect to guide the user to the focused input
+          searchInput.classList.add('ring-4', 'ring-amber-500/60');
+          setTimeout(() => {
+            searchInput.classList.remove('ring-4', 'ring-amber-500/60');
+          }, 1500);
+        }
+      }, 400);
+    }
+  };
+
+  const handleExplorePackages = () => {
+    scrollToSection('#packages');
+  };
+
   const scrollToSection = (id: string) => {
+    if (id === '#test-directory') {
+      handleExploreTests();
+      return;
+    }
     setIsMobileMenuOpen(false);
     const element = document.querySelector(id);
     if (element) {
@@ -450,7 +486,7 @@ const App: React.FC = () => {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none transition-colors min-h-[44px]"
                     placeholder="Enter full name"
                   />
                 </div>
@@ -462,7 +498,7 @@ const App: React.FC = () => {
                     required
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none transition-colors min-h-[44px]"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
@@ -474,7 +510,7 @@ const App: React.FC = () => {
                     value={formData.address}
                     onChange={handleInputChange}
                     rows={2}
-                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none transition-colors"
                     placeholder="House/Flat No., Landmark, Sector"
                   />
                 </div>
@@ -486,7 +522,7 @@ const App: React.FC = () => {
                       name="timeSlot"
                       value={formData.timeSlot}
                       onChange={handleInputChange}
-                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none"
+                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none min-h-[44px]"
                     >
                       <option>Morning (7:00 AM - 9:00 AM)</option>
                       <option>Morning (9:00 AM - 11:00 AM)</option>
@@ -501,7 +537,7 @@ const App: React.FC = () => {
                       name="date"
                       value={formData.date}
                       onChange={handleInputChange}
-                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none"
+                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none min-h-[44px]"
                     />
                   </div>
                 </div>
@@ -513,17 +549,17 @@ const App: React.FC = () => {
                     name="test"
                     value={formData.test}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none transition-colors"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none transition-colors min-h-[44px]"
                     placeholder="e.g. CBC, Lipid, Thyroid, Full Body Shield"
                   />
                 </div>
 
                 <button 
                   type="submit"
-                  className="w-full py-3.5 mt-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 transition-all text-xs md:text-sm"
+                  className="w-full py-4 mt-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/25 transition-all text-xs sm:text-sm min-h-[48px] cursor-pointer"
                 >
-                  <Send className="w-4 h-4" />
-                  Send Request via WhatsApp
+                  <Send className="w-4 h-4 shrink-0" />
+                  <span>Send Request via WhatsApp</span>
                 </button>
               </form>
             </motion.div>
@@ -544,7 +580,7 @@ const App: React.FC = () => {
       />
 
       {/* Main Content */}
-      <main className="relative z-10 pt-20 md:pt-28 pb-20 overflow-hidden">
+      <main className="relative z-10 pt-20 md:pt-28 pb-28 md:pb-24 overflow-hidden">
         
         {/* Hero Section Carousel */}
         <section id="hero" className="mb-8 md:mb-12">
@@ -556,7 +592,8 @@ const App: React.FC = () => {
               setIsBookingModalOpen(true);
             }}
             onUploadRx={() => setIsPrescriptionModalOpen(true)}
-            onExploreTests={() => scrollToSection('#test-directory')}
+            onExploreTests={handleExploreTests}
+            onExplorePackages={handleExplorePackages}
             onSelectPackage={handleSelectPackageForBooking}
             packages={PACKAGES}
           />
@@ -640,14 +677,14 @@ const App: React.FC = () => {
                   <button 
                     onClick={() => handleSelectPackageForBooking(pkg)}
                     className={`
-                      w-full py-3.5 font-bold rounded-xl transition-all duration-300 text-xs md:text-sm flex items-center justify-center gap-2
+                      w-full py-3.5 sm:py-4 font-bold rounded-2xl transition-all duration-300 text-xs sm:text-sm flex items-center justify-center gap-2 min-h-[48px] cursor-pointer
                       ${pkg.popular 
-                        ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 shadow-lg shadow-amber-500/20' 
-                        : 'bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white'}
+                        ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 shadow-lg shadow-amber-500/25' 
+                        : 'bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white border border-slate-700/50'}
                     `}
                   >
-                    <CalendarCheck className="w-4 h-4" />
-                    Book This Package
+                    <CalendarCheck className="w-4 h-4 shrink-0" />
+                    <span>Book This Package</span>
                   </button>
                 </motion.div>
               ))}
@@ -819,8 +856,8 @@ const App: React.FC = () => {
                 </div>
                 <div className="space-y-4">
                   <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
-                    <h4 className="text-3xl font-bold text-slate-900 dark:text-white mb-1">NABL</h4>
-                    <p className="text-xs text-slate-500 uppercase font-semibold">Standard Quality</p>
+                    <h4 className="text-3xl font-bold text-slate-900 dark:text-white mb-1">ISO</h4>
+                    <p className="text-xs text-slate-500 uppercase font-semibold">9001:2008 Certified</p>
                   </div>
                   <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
                     <h4 className="text-3xl font-bold text-vitality-green mb-1">24/7</h4>
@@ -837,149 +874,6 @@ const App: React.FC = () => {
 
         {/* Patient Reviews & Google Trust */}
         <ReviewsSection />
-
-        {/* Contact / Location & Google Map Card */}
-        <section id="contact" className="container mx-auto px-4 md:px-8 mt-24 md:mt-32 pt-12 md:pt-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 bg-white dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 p-6 md:p-12 rounded-3xl relative overflow-hidden shadow-sm">
-            
-            {/* CTA & Details */}
-            <div className="relative z-10 flex flex-col justify-center">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-amber-500" />
-                  PHYSICAL LAB LOCATION
-                </span>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 dark:text-white mb-4 md:mb-6">
-                Visit <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-sterile-cyan">Sun Life Path Lab</span>
-              </h2>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
-                Visit our diagnostic centre or schedule a certified phlebotomist home collection. View our verified location on Google Maps below.
-              </p>
-              
-              <div className="space-y-5">
-                 <div className="flex items-start gap-4">
-                    <div className="p-3 bg-amber-500/10 text-amber-500 rounded-xl border border-amber-500/20">
-                      <MapPin className="w-5 h-5 md:w-6 md:h-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 dark:text-white text-base md:text-lg">Lab Address</h3>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base">{LAB_ADDRESS}</p>
-                      <a 
-                        href={GOOGLE_MAPS_URL} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-sterile-cyan hover:underline mt-1"
-                      >
-                        Open exact pin in Google Maps
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </div>
-                 </div>
-
-                 <div className="flex items-start gap-4">
-                    <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl border border-emerald-500/20">
-                      <Phone className="w-5 h-5 md:w-6 md:h-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 dark:text-white text-base md:text-lg">Contact & Helpline</h3>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base">{LAB_PHONE_NUMBER}</p>
-                    </div>
-                 </div>
-
-                 <div className="flex items-start gap-4">
-                    <div className="p-3 bg-blue-500/10 text-blue-500 rounded-xl border border-blue-500/20">
-                      <Star className="w-5 h-5 md:w-6 md:h-6 fill-amber-500 text-amber-500" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 dark:text-white text-base md:text-lg">Google Business Profile</h3>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base">Verified reviews, lab ratings & photos</p>
-                      <a 
-                        href={GOOGLE_PROFILE_URL} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-amber-500 hover:underline mt-1"
-                      >
-                        View Google profile & feedback
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </div>
-                 </div>
-              </div>
-
-              <div className="flex flex-wrap gap-3 mt-8 md:mt-10">
-                <button 
-                  onClick={() => setIsBookingModalOpen(true)}
-                  className="py-3 px-6 bg-gradient-to-r from-amber-500 to-sterile-cyan hover:from-amber-600 hover:to-cyan-600 text-white font-bold rounded-xl transition-all shadow-lg shadow-amber-500/20 text-xs md:text-sm flex items-center gap-2"
-                >
-                  <CalendarCheck className="w-4 h-4" />
-                  Book Home Visit
-                </button>
-                <a 
-                  href={GOOGLE_MAPS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="py-3 px-6 bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white font-semibold rounded-xl transition-all border border-slate-700 text-xs md:text-sm flex items-center gap-2 group"
-                >
-                  <Navigation className="w-4 h-4 text-sterile-cyan group-hover:scale-110 transition-transform" />
-                  Get Directions
-                  <ExternalLink className="w-3.5 h-3.5 opacity-60" />
-                </a>
-              </div>
-            </div>
-
-            {/* Interactive Map Visual Link Card */}
-            <a 
-              href={GOOGLE_MAPS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative h-80 lg:h-full min-h-[320px] bg-slate-100 dark:bg-slate-800/60 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col justify-between p-6 transition-all duration-300 hover:border-amber-500/50 hover:shadow-xl hover:shadow-amber-500/10 cursor-pointer"
-            >
-              {/* Map background grid pattern & pulse */}
-              <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity">
-                <div className="w-full h-full bg-[radial-gradient(#94a3b8_1.5px,transparent_1.5px)] dark:bg-[radial-gradient(#475569_1.5px,transparent_1.5px)] [background-size:20px_20px]"></div>
-              </div>
-
-              {/* Top status banner */}
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="px-3 py-1 bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-full text-xs font-bold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                  Live on Google Maps
-                </span>
-                <span className="p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-full text-slate-700 dark:text-slate-300 group-hover:text-amber-500 transition-colors shadow-sm">
-                  <ExternalLink className="w-4 h-4" />
-                </span>
-              </div>
-
-              {/* Center Map Pin Graphic */}
-              <div className="relative z-10 text-center my-auto flex flex-col items-center">
-                <div className="relative mb-3">
-                  <div className="absolute -inset-4 bg-amber-500/20 rounded-full blur-md group-hover:bg-amber-500/30 transition-all" />
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-red-500 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
-                    <MapPin className="w-7 h-7" />
-                  </div>
-                </div>
-                <h4 className="font-display font-bold text-slate-900 dark:text-white text-lg md:text-xl group-hover:text-amber-500 transition-colors">
-                  Sun Life Path Lab
-                </h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xs">
-                  Click to launch Navigation & Directions in Google Maps
-                </p>
-              </div>
-
-              {/* Bottom Quick Bar */}
-              <div className="relative z-10 flex items-center justify-between pt-4 border-t border-slate-200/80 dark:border-slate-700/80 bg-white/60 dark:bg-slate-900/60 -mx-6 -mb-6 p-4 px-6 backdrop-blur-sm">
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-amber-500">
-                  <Star className="w-3.5 h-3.5 fill-amber-500" />
-                  <span>Google Ratings & Reviews</span>
-                </div>
-                <span className="text-xs font-bold text-sterile-cyan flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                  Open Maps →
-                </span>
-              </div>
-            </a>
-          </div>
-        </section>
       </main>
 
       {/* Floating Action Bar */}
@@ -991,61 +885,23 @@ const App: React.FC = () => {
       />
 
       {/* Footer */}
-      <footer className="relative z-10 bg-slate-100 dark:bg-black py-10 md:py-14 border-t border-slate-200 dark:border-slate-900 mt-16 md:mt-20">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200 dark:border-slate-800">
-            <Logo size="md" />
-
-            <div className="flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm text-slate-600 dark:text-slate-400">
-              <a 
-                href={GOOGLE_PROFILE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-amber-500 transition-colors flex items-center gap-1.5"
-              >
-                <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                Google Business Profile
-              </a>
-              <a 
-                href={GOOGLE_MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-sterile-cyan transition-colors flex items-center gap-1.5"
-              >
-                <MapPin className="w-4 h-4 text-sterile-cyan" />
-                Google Maps Location
-              </a>
-              <button 
-                onClick={() => setIsPrescriptionModalOpen(true)}
-                className="hover:text-amber-500 transition-colors flex items-center gap-1.5"
-              >
-                <UploadCloud className="w-4 h-4 text-amber-500" />
-                Upload Rx
-              </button>
-              <button 
-                onClick={() => setIsSampleReportModalOpen(true)}
-                className="hover:text-sterile-cyan transition-colors flex items-center gap-1.5"
-              >
-                <FileText className="w-4 h-4 text-sterile-cyan" />
-                Sample Report
-              </button>
-              <button 
-                onClick={() => setIsBookingModalOpen(true)}
-                className="hover:text-emerald-500 transition-colors flex items-center gap-1.5"
-              >
-                <CalendarCheck className="w-4 h-4 text-emerald-500" />
-                Book Home Visit
-              </button>
-            </div>
-          </div>
-
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <p className="text-slate-500 text-xs md:text-sm">
-              © {new Date().getFullYear()} SUN LIFE PATH LAB. NABL ACCREDITED DIAGNOSTIC CENTRE.
-            </p>
-            <p className="text-slate-400 text-xs">
-              Precision Pathology • Certified Technicians • Rapid Reporting
-            </p>
+      <footer className="relative z-10 bg-slate-100 dark:bg-black py-8 md:py-12 border-t border-slate-200 dark:border-slate-900 mt-16 md:mt-20">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-slate-500 text-xs md:text-sm">© 2026 SUN LIFE PATH LAB. ISO ACCREDITED.</p>
+          <div className="flex flex-col items-center gap-2 mt-2">
+            <a 
+              href="tel:8860453100" 
+              className="text-slate-400 hover:text-sterile-cyan transition-colors text-[10px] md:text-xs flex items-center gap-1 group cursor-pointer"
+            >
+              Created with <Heart className="w-3 h-3 text-red-500 fill-red-500 group-hover:scale-110 transition-transform" /> by Karan Sharma
+            </a>
+            <a 
+              href="mailto:biz.karan.sharma@gmail.com" 
+              className="text-slate-500 hover:text-sterile-cyan transition-colors text-[10px] md:text-xs flex items-center gap-1.5 cursor-pointer lowercase"
+            >
+              <Mail className="w-3 h-3" />
+              <span>biz.karan.sharma@gmail.com</span>
+            </a>
           </div>
         </div>
       </footer>

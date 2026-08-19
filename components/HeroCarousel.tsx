@@ -17,7 +17,8 @@ import {
   Star,
   Zap,
   Microscope,
-  Award
+  Award,
+  MessageCircle
 } from 'lucide-react';
 import { PackageItem, DiagnosticTest } from '../types';
 import { GOOGLE_MAPS_URL, GOOGLE_PROFILE_URL, LAB_WHATSAPP_NUMBER } from '../constants';
@@ -47,6 +48,7 @@ interface HeroCarouselProps {
   onBookVisit: (testName?: string) => void;
   onUploadRx: () => void;
   onExploreTests: () => void;
+  onExplorePackages?: () => void;
   onSelectPackage?: (pkg: PackageItem) => void;
   packages: PackageItem[];
 }
@@ -54,21 +56,21 @@ interface HeroCarouselProps {
 export const HERO_SLIDES: CarouselSlide[] = [
   {
     id: 'slide-home-pickup',
-    badge: 'NABL Quality Standard & Doorstep Care',
+    badge: 'Govt. of NCT Delhi & A.E.R.B. Approved Centre',
     badgeType: 'trust',
     title: 'Precision Pathology,',
     titleHighlight: 'At Your Doorstep',
-    subtitle: 'Sun Life Path Lab • Accurate Diagnostic Solutions',
-    description: 'Certified phlebotomists, automated barcoded sample handling, and verifiable digital PDF reports delivered straight to your WhatsApp in 4-8 hours.',
+    subtitle: 'Sun Life Path Lab • Fully Automatic Clinical Laboratory',
+    description: 'Certified phlebotomists, automated barcoded sample handling, and verifiable digital PDF reports delivered straight to your WhatsApp in 4-8 hours with FREE Doctor Consultation.',
     primaryActionLabel: 'Book Free Home Visit',
     primaryActionType: 'book',
     secondaryActionLabel: 'Upload Doctor Prescription',
     secondaryActionType: 'upload',
-    tagList: ['Zero Sample Mixing', 'Pre-sealed Vacutainers', 'Same Day WhatsApp Reports'],
+    tagList: ['Free Doctor Consultation', 'Pre-sealed Vacutainers', 'Same Day WhatsApp Reports'],
     metrics: [
       { label: 'Google Rating', value: '4.9 ★', icon: Star },
       { label: 'Happy Patients', value: '50k+', icon: HeartPulse },
-      { label: 'Turnaround', value: '4-8 Hrs', icon: Clock },
+      { label: 'Doctor Review', value: 'FREE', icon: CheckCircle2 },
     ],
     bgGradient: 'from-amber-500/15 via-sky-500/10 to-transparent',
     accentColor: 'text-amber-500 dark:text-amber-400',
@@ -76,27 +78,27 @@ export const HERO_SLIDES: CarouselSlide[] = [
   },
   {
     id: 'slide-full-body',
-    badge: 'Limited Period Offer • 52% Flat Discount',
+    badge: 'Senior Citizen Care • Comprehensive Package',
     badgeType: 'promo',
-    title: 'Full Body Executive',
-    titleHighlight: 'Shield Health Package',
-    subtitle: '88 Vital Parameters Including Vitamins & Thyroid',
-    description: 'Complete screening of Liver, Kidney, Lipid, Sugar, CBC, Thyroid Profile, and Vitamin D & B12 for whole-body preventive wellness.',
-    primaryActionLabel: 'Book Package @ ₹1,999',
+    title: 'Senior Citizen',
+    titleHighlight: 'Comprehensive Package',
+    subtitle: '98 Vital Parameters + FREE Doctor Consultation',
+    description: 'Complete screening of Heart, Liver, Kidney, Thyroid, Diabetes, Bone minerals, Iron profile, and Vitamins with Free Doctor Report Review.',
+    primaryActionLabel: 'Book Package @ ₹2,999',
     primaryActionType: 'book',
     secondaryActionLabel: 'Explore All Packages',
-    secondaryActionType: 'explore',
-    tagList: ['88 Tests Included', '10-12 Hrs Fasting', 'Free Home Collection'],
+    secondaryActionType: 'explore-packages',
+    tagList: ['98 Tests Included', '10-12 Hrs Fasting', 'Free Doctor Consultation'],
     metrics: [
-      { label: 'Package Price', value: '₹1,999', icon: Sparkles },
-      { label: 'Actual Value', value: '₹4,200', icon: Award },
-      { label: 'Total Parameters', value: '88+', icon: Activity },
+      { label: 'Package Price', value: '₹2,999', icon: Sparkles },
+      { label: 'Actual Value', value: '₹5,800', icon: Award },
+      { label: 'Doctor Review', value: '100% Free', icon: Activity },
     ],
     bgGradient: 'from-sky-500/15 via-indigo-500/10 to-transparent',
     accentColor: 'text-sky-500 dark:text-sky-400',
     accentBadgeColor: 'bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/30',
-    packageRefId: 'pkg2',
-    highlightPrice: { current: '₹1,999', original: '₹4,200', discount: '52% OFF' }
+    packageRefId: 'pkg3',
+    highlightPrice: { current: '₹2,999', original: '₹5,800', discount: '48% OFF' }
   },
   {
     id: 'slide-rx-upload',
@@ -110,11 +112,11 @@ export const HERO_SLIDES: CarouselSlide[] = [
     primaryActionType: 'upload',
     secondaryActionLabel: 'Chat with Lab on WhatsApp',
     secondaryActionType: 'whatsapp',
-    tagList: ['Instant Quotation', 'Pharmacist Assistance', 'Best Bundle Pricing'],
+    tagList: ['Instant Quotation', 'Pharmacist Assistance', 'Free Doctor Consultation'],
     metrics: [
       { label: 'Response Time', value: '< 5 Mins', icon: Clock },
-      { label: 'Discount Benefit', value: 'Up to 50%', icon: Zap },
-      { label: 'Accuracy Check', value: 'Pathologist Verified', icon: ShieldCheck },
+      { label: 'Doctor Review', value: 'Included', icon: ShieldCheck },
+      { label: 'Accuracy Check', value: 'Pathologist Verified', icon: Zap },
     ],
     bgGradient: 'from-emerald-500/15 via-teal-500/10 to-transparent',
     accentColor: 'text-emerald-500 dark:text-emerald-400',
@@ -122,26 +124,26 @@ export const HERO_SLIDES: CarouselSlide[] = [
   },
   {
     id: 'slide-diabetes-cardiac',
-    badge: 'Specialized Metabolic & Cardiac Care',
+    badge: 'Specialized Metabolic & Cardiac Screening',
     badgeType: 'featured',
-    title: 'Diabetes & Heart',
-    titleHighlight: 'Risk Evaluation',
-    subtitle: 'Gold Standard HPLC HbA1c, Lipid Profile & ECG',
-    description: 'Prevent complications with accurate 3-month average glucose monitoring (HbA1c), Atherogenic lipid index, and computerized resting 12-lead ECG.',
-    primaryActionLabel: 'Book Diabetes Screen (₹450)',
+    title: 'Diabetes, Thyroid &',
+    titleHighlight: 'Heart Health Tests',
+    subtitle: 'HbA1c (₹500) • Thyroid Profile (₹600) • ECG (₹400)',
+    description: 'Accurate HPLC 3-month average glucose monitoring, Chemiluminescence thyroid hormones, LFT/KFT (₹600), and 12-lead ECG with FREE Doctor Consultation.',
+    primaryActionLabel: 'Book Diabetes Screen (₹500)',
     primaryActionType: 'book',
     secondaryActionLabel: 'Search All Tests',
-    secondaryActionType: 'explore',
-    tagList: ['HbA1c & Fasting Glucose', 'Lipid Risk Ratios', 'Cardiologist Verified ECG'],
+    secondaryActionType: 'explore-tests',
+    tagList: ['HbA1c ₹500', 'Thyroid Profile ₹600', 'Free Doctor Consultation'],
     metrics: [
       { label: 'HbA1c Method', value: 'HPLC Standard', icon: Microscope },
       { label: 'Report Delivery', value: '4-6 Hours', icon: Clock },
-      { label: 'ECG Duration', value: '15 Mins', icon: HeartPulse },
+      { label: 'Doctor Review', value: 'Free', icon: HeartPulse },
     ],
     bgGradient: 'from-amber-500/15 via-rose-500/10 to-transparent',
     accentColor: 'text-amber-500 dark:text-amber-400',
     accentBadgeColor: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/30',
-    highlightPrice: { current: '₹450', original: '₹700', discount: '35% OFF' }
+    highlightPrice: { current: '₹500', original: '₹750', discount: '33% OFF' }
   }
 ];
 
@@ -149,6 +151,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({
   onBookVisit,
   onUploadRx,
   onExploreTests,
+  onExplorePackages,
   onSelectPackage,
   packages
 }) => {
@@ -194,7 +197,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({
           }
         }
         if (slide.id === 'slide-diabetes-cardiac') {
-          onBookVisit('HbA1c & Diabetes Risk Screen (₹450)');
+          onBookVisit('HbA1c & Diabetes Risk Screen (₹500)');
         } else {
           onBookVisit();
         }
@@ -202,6 +205,14 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({
       case 'upload':
         onUploadRx();
         break;
+      case 'explore-packages':
+        if (onExplorePackages) {
+          onExplorePackages();
+        } else {
+          onExploreTests();
+        }
+        break;
+      case 'explore-tests':
       case 'explore':
         onExploreTests();
         break;
@@ -321,27 +332,41 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
                   <button
                     id={`hero-action-primary-${currentIndex}`}
                     onClick={() => handleAction(currentSlide.primaryActionType, currentSlide)}
-                    className="px-6 sm:px-8 py-3.5 bg-gradient-to-r from-amber-500 to-sky-600 hover:from-amber-600 hover:to-sky-700 text-white font-bold text-xs sm:text-sm rounded-full shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5"
+                    className="w-full sm:w-auto px-6 sm:px-8 py-3.5 bg-gradient-to-r from-amber-500 to-sky-600 hover:from-amber-600 hover:to-sky-700 text-white font-bold text-xs sm:text-sm rounded-xl sm:rounded-full shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5 min-h-[46px]"
                   >
-                    <CalendarCheck className="w-4 h-4" />
+                    {currentSlide.primaryActionType === 'upload' ? (
+                      <UploadCloud className="w-4 h-4 shrink-0" />
+                    ) : currentSlide.primaryActionType === 'explore-packages' ? (
+                      <Sparkles className="w-4 h-4 shrink-0" />
+                    ) : currentSlide.primaryActionType === 'explore-tests' || currentSlide.primaryActionType === 'explore' ? (
+                      <Search className="w-4 h-4 shrink-0" />
+                    ) : currentSlide.primaryActionType === 'whatsapp' ? (
+                      <MessageCircle className="w-4 h-4 shrink-0" />
+                    ) : (
+                      <CalendarCheck className="w-4 h-4 shrink-0" />
+                    )}
                     <span>{currentSlide.primaryActionLabel}</span>
                   </button>
 
                   <button
                     id={`hero-action-secondary-${currentIndex}`}
                     onClick={() => handleAction(currentSlide.secondaryActionType, currentSlide)}
-                    className="px-5 sm:px-6 py-3.5 bg-slate-100 dark:bg-slate-800/90 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm rounded-full border border-slate-200 dark:border-slate-700 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer hover:border-amber-500/50"
+                    className="w-full sm:w-auto px-5 sm:px-6 py-3.5 bg-slate-100 dark:bg-slate-800/90 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm rounded-xl sm:rounded-full border border-slate-200 dark:border-slate-700 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer hover:border-amber-500/50 min-h-[46px]"
                   >
                     {currentSlide.secondaryActionType === 'upload' ? (
-                      <UploadCloud className="w-4 h-4 text-amber-500" />
+                      <UploadCloud className="w-4 h-4 text-amber-500 shrink-0" />
                     ) : currentSlide.secondaryActionType === 'whatsapp' ? (
-                      <Activity className="w-4 h-4 text-emerald-500" />
+                      <MessageCircle className="w-4 h-4 text-emerald-500 shrink-0" />
+                    ) : currentSlide.secondaryActionType === 'explore-packages' ? (
+                      <Sparkles className="w-4 h-4 text-sky-500 shrink-0" />
+                    ) : currentSlide.secondaryActionType === 'book' ? (
+                      <CalendarCheck className="w-4 h-4 text-amber-500 shrink-0" />
                     ) : (
-                      <Search className="w-4 h-4 text-sky-500" />
+                      <Search className="w-4 h-4 text-sky-500 shrink-0" />
                     )}
                     <span>{currentSlide.secondaryActionLabel}</span>
                   </button>

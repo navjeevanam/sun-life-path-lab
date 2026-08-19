@@ -144,7 +144,7 @@ export const PrescriptionUploadModal: React.FC<PrescriptionUploadModalProps> = (
               value={patientName}
               onChange={(e) => setPatientName(e.target.value)}
               placeholder="e.g. Ramesh Kumar"
-              className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none"
+              className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none min-h-[44px]"
             />
           </div>
 
@@ -157,7 +157,7 @@ export const PrescriptionUploadModal: React.FC<PrescriptionUploadModalProps> = (
                 value={patientPhone}
                 onChange={(e) => setPatientPhone(e.target.value)}
                 placeholder="+91 XXXXX XXXXX"
-                className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none min-h-[44px]"
               />
             </div>
             <div>
@@ -168,7 +168,7 @@ export const PrescriptionUploadModal: React.FC<PrescriptionUploadModalProps> = (
                 value={patientAddress}
                 onChange={(e) => setPatientAddress(e.target.value)}
                 placeholder="House / Flat No., Sector"
-                className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none min-h-[44px]"
               />
             </div>
           </div>
@@ -180,7 +180,7 @@ export const PrescriptionUploadModal: React.FC<PrescriptionUploadModalProps> = (
               onChange={(e) => setNotes(e.target.value)}
               rows={2}
               placeholder="e.g. Fasting sugar test needed, patient has mild fever"
-              className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none"
+              className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs md:text-sm text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none"
             />
           </div>
 
@@ -193,10 +193,10 @@ export const PrescriptionUploadModal: React.FC<PrescriptionUploadModalProps> = (
 
           <button
             type="submit"
-            className="w-full py-3.5 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 transition-all text-sm"
+            className="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/25 transition-all text-xs sm:text-sm min-h-[48px] cursor-pointer"
           >
-            <Send className="w-4 h-4" />
-            Submit Prescription to WhatsApp
+            <Send className="w-4 h-4 shrink-0" />
+            <span>Submit Prescription to WhatsApp</span>
           </button>
         </form>
       </motion.div>

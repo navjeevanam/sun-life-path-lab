@@ -109,16 +109,16 @@ export const HomeCollectionProcess: React.FC<HomeCollectionProcessProps> = ({ on
       </div>
 
       {/* Safety & Hygiene Guarantee Banner */}
-      <div className="mt-10 bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500 shrink-0">
+      <div className="mt-10 bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex items-center gap-4 w-full md:w-auto">
+          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500 shrink-0">
             <ShieldCheck className="w-6 h-6" />
           </div>
           <div>
             <h4 className="font-bold text-slate-900 dark:text-white text-sm md:text-base">
               100% Sterile & Pre-sealed BD Vacutainer® Guarantee
             </h4>
-            <p className="text-xs text-slate-600 dark:text-slate-400">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
               Zero cross-contamination. Sealed single-use needles unsealed exclusively in front of the patient.
             </p>
           </div>
@@ -126,9 +126,10 @@ export const HomeCollectionProcess: React.FC<HomeCollectionProcessProps> = ({ on
 
         <button
           onClick={onBookClick}
-          className="px-6 py-3 bg-gradient-to-r from-amber-500 to-sterile-cyan hover:from-amber-600 hover:to-cyan-600 text-white font-bold text-xs md:text-sm rounded-full shadow-md whitespace-nowrap"
+          className="w-full md:w-auto px-8 py-3.5 bg-gradient-to-r from-amber-500 to-sterile-cyan hover:from-amber-600 hover:to-cyan-600 text-white font-bold text-xs sm:text-sm rounded-xl sm:rounded-full shadow-md hover:shadow-lg shadow-amber-500/20 whitespace-nowrap min-h-[48px] flex items-center justify-center gap-2 cursor-pointer transition-all shrink-0"
         >
-          Book Home Visit Today
+          <CalendarCheck className="w-4 h-4 shrink-0" />
+          <span>Book Home Visit Today</span>
         </button>
       </div>
     </section>

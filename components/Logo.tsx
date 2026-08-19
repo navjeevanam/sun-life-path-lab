@@ -1,100 +1,108 @@
 import React from 'react';
 
 interface LogoProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   showSubtitle?: boolean;
   className?: string;
+  useImage?: boolean;
 }
 
 export const Logo: React.FC<LogoProps> = ({ 
   size = 'md', 
   showSubtitle = true,
-  className = '' 
+  className = '',
+  useImage = false
 }) => {
   const iconSizes = {
-    sm: 'w-7 h-7 sm:w-8 sm:h-8',
-    md: 'w-8 h-8 sm:w-10 sm:h-10',
-    lg: 'w-10 h-10 sm:w-12 sm:h-12',
+    sm: 'w-8 h-8 sm:w-9 sm:h-9',
+    md: 'w-9 h-9 sm:w-11 sm:h-11',
+    lg: 'w-12 h-12 sm:w-14 sm:h-14',
+    xl: 'w-16 h-16 sm:w-20 sm:h-20'
   };
 
   const textSizes = {
     sm: 'text-sm sm:text-base',
     md: 'text-base sm:text-lg md:text-xl',
     lg: 'text-lg sm:text-xl md:text-2xl',
+    xl: 'text-2xl sm:text-3xl'
+  };
+
+  const subtitleSizes = {
+    sm: 'text-[8px] sm:text-[9px]',
+    md: 'text-[9px] sm:text-[10px]',
+    lg: 'text-[10px] sm:text-[11px]',
+    xl: 'text-xs'
   };
 
   return (
-    <div className={`flex items-center gap-2 sm:gap-3 select-none shrink-0 ${className}`}>
-      {/* Sun Life Path Lab Emblem */}
+    <div className={`flex items-center gap-2.5 sm:gap-3 select-none shrink-0 ${className}`}>
+      {/* Sun Life Path Lab Brand Emblem */}
       <div className={`relative ${iconSizes[size]} flex items-center justify-center shrink-0`}>
-        {/* Glow backdrop */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-amber-500 via-orange-500 to-sterile-cyan rounded-xl blur-[6px] opacity-40 animate-pulse" />
+        {/* Glow backdrop on dark theme */}
+        <div className="absolute inset-0 bg-amber-500/20 rounded-full blur-md opacity-60 dark:opacity-80" />
         
-        {/* Badge container */}
-        <div className="relative w-full h-full rounded-xl bg-gradient-to-br from-amber-500 via-orange-500 to-cyan-600 p-[1.5px] shadow-lg shadow-amber-500/20">
-          <div className="w-full h-full bg-slate-950 dark:bg-slate-900 rounded-[10px] flex items-center justify-center overflow-hidden">
-            {/* Custom SVG Sun + Pulse Logo */}
-            <svg 
-              viewBox="0 0 40 40" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-4/5 h-4/5"
-            >
-              {/* Sun Core & Rays */}
-              <circle cx="20" cy="20" r="7" fill="url(#sunGradient)" />
+        {/* Emblem Container */}
+        <div className="relative w-full h-full rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-1 shadow-md shadow-amber-500/10 flex items-center justify-center overflow-hidden">
+          {/* Authentic Vector Sun + Test Tube Heart Emblem */}
+          <svg 
+            viewBox="0 0 100 100" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full"
+          >
+            {/* Radiant Sun Rays (Golden Yellow) */}
+            <g fill="#EAB308">
+              <path d="M50 4L52.5 19H47.5L50 4Z" />
+              <path d="M65 9L63 22L59 20L65 9Z" />
+              <path d="M78 19L72 30L68 27L78 19Z" />
+              <path d="M88 33L77 41L75 37L88 33Z" />
+              <path d="M93 50L80 52L80 47L93 50Z" />
               
-              {/* Sun Rays */}
-              <g stroke="url(#rayGradient)" strokeWidth="1.8" strokeLinecap="round">
-                <line x1="20" y1="3" x2="20" y2="7" />
-                <line x1="20" y1="33" x2="20" y2="37" />
-                <line x1="3" y1="20" x2="7" y2="20" />
-                <line x1="33" y1="20" x2="37" y2="20" />
-                <line x1="8" y1="8" x2="11" y2="11" />
-                <line x1="29" y1="29" x2="32" y2="32" />
-                <line x1="8" y1="32" x2="11" y2="29" />
-                <line x1="29" y1="11" x2="32" y2="8" />
-              </g>
+              <path d="M35 9L41 20L37 22L35 9Z" />
+              <path d="M22 19L32 27L28 30L22 19Z" />
+              <path d="M12 33L25 37L23 41L12 33Z" />
+              <path d="M7 50L20 47L20 52L7 50Z" />
+            </g>
 
-              {/* Heartbeat / Diagnostic Pulse Line across center */}
-              <path 
-                d="M10 20.5H16L18 16L21 25L23 18L24.5 20.5H30" 
-                stroke="#FFFFFF" 
-                strokeWidth="1.8" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-              />
+            {/* Semi-Circle Sun Base */}
+            <path
+              d="M22 53C22 37.536 34.536 25 50 25C65.464 25 78 37.536 78 53H22Z"
+              fill="#FBBF24"
+            />
 
-              <defs>
-                <linearGradient id="sunGradient" x1="13" y1="13" x2="27" y2="27" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#F59E0B" />
-                  <stop offset="1" stopColor="#EF4444" />
-                </linearGradient>
-                <linearGradient id="rayGradient" x1="3" y1="3" x2="37" y2="37" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#FBBF24" />
-                  <stop offset="0.5" stopColor="#F97316" />
-                  <stop offset="1" stopColor="#06B6D4" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+            {/* Stylized Test Tube & Intertwined Heart Loop (Teal #0B7C8A) */}
+            <g stroke="#0D9488" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" fill="none">
+              {/* Test Tube Rim */}
+              <path d="M44 32H56" strokeWidth="4" />
+              
+              {/* Test tube stem descending into heart shape base */}
+              <path d="M46 32V45C46 45 38 47 35 53C31 60 34 69 42 71C48 73 50 77 50 82C50 77 52 73 58 71C66 69 69 60 65 53C62 47 54 45 54 45V32" />
+              
+              {/* Central fluid indicator */}
+              <path d="M47 52C47 58 50 65 50 72C50 65 53 58 53 52" stroke="#0284C7" strokeWidth="2.5" />
+            </g>
+          </svg>
         </div>
       </div>
 
       {/* Brand Typography */}
       <div className="flex flex-col">
         <div className="flex items-center gap-1 sm:gap-1.5 leading-none">
-          <span className={`font-display font-black tracking-wide text-slate-900 dark:text-white ${textSizes[size]}`}>
+          <span className={`font-display font-extrabold tracking-tight text-slate-900 dark:text-white uppercase ${textSizes[size]}`}>
             SUN LIFE
           </span>
-          <span className={`font-display font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-cyan-500 ${textSizes[size]}`}>
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse hidden sm:inline-block" />
+        </div>
+        <div className="flex items-center gap-1.5 mt-0.5">
+          <span className={`font-display font-bold tracking-widest text-teal-600 dark:text-teal-400 uppercase leading-tight ${subtitleSizes[size]}`}>
             PATH LAB
           </span>
+          {showSubtitle && (
+            <span className="hidden sm:inline text-slate-400 dark:text-slate-500 font-medium text-[8px] sm:text-[9px]">
+              • Fully Automatic Lab
+            </span>
+          )}
         </div>
-        {showSubtitle && (
-          <span className="hidden sm:block text-[8.5px] md:text-[9.5px] text-slate-500 dark:text-slate-400 font-semibold tracking-widest uppercase mt-0.5 whitespace-nowrap">
-            Pathology & Diagnostics
-          </span>
-        )}
       </div>
     </div>
   );

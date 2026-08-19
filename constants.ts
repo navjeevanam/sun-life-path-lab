@@ -21,9 +21,16 @@ import { ServiceItem, PackageItem, DiagnosticTest, TestimonialItem } from './typ
 
 export const GOOGLE_PROFILE_URL = 'https://share.google/DwSfsckeACq5hXrcr';
 export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/2F2TuzAi6SoycW158';
-export const LAB_PHONE_NUMBER = "+91 98765 43210";
-export const LAB_WHATSAPP_NUMBER = "919876543210";
-export const LAB_ADDRESS = "Sun Life Path Lab, Palam / Dwarka, New Delhi";
+export const LAB_PHONE_NUMBER = "+91 93109 28533";
+export const LAB_PHONE_RAW = "9310928533";
+export const LAB_WHATSAPP_NUMBER = "919310928533";
+export const LAB_ADDRESS = "Plot No.2, Main Mkt. Ranhola Road, (Lions Enclave) Vikas Nagar, Uttam Nagar, New Delhi-110059";
+export const LAB_ACCREDITATIONS = [
+  "Approved by Govt. of NCT Delhi",
+  "A.E.R.B. Approved Centre",
+  "ISO 9001:2008 Certified Lab",
+  "Fully Automatic Clinical Lab"
+];
 
 export const NAV_LINKS = [
   { label: 'Tests', href: '#test-directory' },
@@ -32,7 +39,7 @@ export const NAV_LINKS = [
   { label: 'Imaging', href: '#imaging' },
   { label: 'How It Works', href: '#process' },
   { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Reviews', href: '#reviews' },
 ];
 
 export const DIAGNOSTIC_TESTS: DiagnosticTest[] = [
@@ -45,8 +52,128 @@ export const DIAGNOSTIC_TESTS: DiagnosticTest[] = [
     sampleType: 'Blood (EDTA tube)',
     fastingRequired: false,
     turnaroundTime: '4 - 6 Hours',
-    description: 'Measures RBC, WBC, Hemoglobin, Platelets, MCV, MCH, MCHC and automated ESR for infection and anemia screening.',
+    description: 'Measures RBC, WBC, Hemoglobin, Platelets, MCV, MCH, MCHC and automated ESR for infection and anemia screening. Includes Free Doctor Consultation.',
     parametersCount: 24,
+    popular: true
+  },
+  {
+    id: 'test-thyroid',
+    name: 'Thyroid Profile Total (T3, T4, TSH)',
+    category: 'hormones',
+    price: 600,
+    originalPrice: 900,
+    sampleType: 'Blood (Serum)',
+    fastingRequired: true,
+    fastingHours: 8,
+    turnaroundTime: '6 - 8 Hours',
+    description: 'High-sensitivity chemiluminescence immunoassay for thyroid gland function, metabolism, and weight regulation. Includes Free Doctor Consultation.',
+    parametersCount: 3,
+    popular: true
+  },
+  {
+    id: 'test-hba1c',
+    name: 'HbA1c (Glycated Hemoglobin)',
+    category: 'diabetes',
+    price: 500,
+    originalPrice: 750,
+    sampleType: 'Blood (EDTA tube)',
+    fastingRequired: false,
+    turnaroundTime: '4 - 6 Hours',
+    description: 'Gold standard HPLC method assessing average 3-month blood glucose control with estimated Average Glucose (eAG). Includes Free Doctor Consultation.',
+    parametersCount: 2,
+    popular: true
+  },
+  {
+    id: 'test-lft',
+    name: 'Liver Function Test (LFT Complete)',
+    category: 'biochemistry',
+    price: 600,
+    originalPrice: 950,
+    sampleType: 'Blood (Serum)',
+    fastingRequired: true,
+    fastingHours: 8,
+    turnaroundTime: '6 - 8 Hours',
+    description: 'SGOT, SGPT, Bilirubin Total/Direct/Indirect, Alkaline Phosphatase, Total Protein, Albumin, Globulin & A/G Ratio. Includes Free Doctor Consultation.',
+    parametersCount: 11,
+    popular: true
+  },
+  {
+    id: 'test-kft',
+    name: 'Kidney Function Test (KFT / RFT)',
+    category: 'biochemistry',
+    price: 600,
+    originalPrice: 950,
+    sampleType: 'Blood (Serum)',
+    fastingRequired: false,
+    turnaroundTime: '6 - 8 Hours',
+    description: 'Urea, Blood Urea Nitrogen, Serum Creatinine, Uric Acid, Calcium, and Phosphorus with eGFR calculation. Includes Free Doctor Consultation.',
+    parametersCount: 7,
+    popular: true
+  },
+  {
+    id: 'test-vitd',
+    name: 'Vitamin D3 (25-OH Hydroxy)',
+    category: 'vitamins',
+    price: 1200,
+    originalPrice: 1800,
+    sampleType: 'Blood (Serum)',
+    fastingRequired: false,
+    turnaroundTime: '12 - 24 Hours',
+    description: 'Quantitative measurement of 25-OH Vitamin D3 for bone density, calcium metabolism, fatigue and immunity. Includes Free Doctor Consultation.',
+    parametersCount: 1,
+    popular: true
+  },
+  {
+    id: 'test-vitb12',
+    name: 'Vitamin B12 (Cyanocobalamin)',
+    category: 'vitamins',
+    price: 500,
+    originalPrice: 900,
+    sampleType: 'Blood (Serum)',
+    fastingRequired: true,
+    fastingHours: 8,
+    turnaroundTime: '12 - 24 Hours',
+    description: 'Chemiluminescent assay assessing nerve function, cognitive health, fatigue levels, and red cell synthesis. Includes Free Doctor Consultation.',
+    parametersCount: 1,
+    popular: true
+  },
+  {
+    id: 'test-urine',
+    name: 'Urine Routine & Microscopy',
+    category: 'hematology',
+    price: 100,
+    originalPrice: 200,
+    sampleType: 'Fresh Midstream Urine',
+    fastingRequired: false,
+    turnaroundTime: '4 - 6 Hours',
+    description: 'Physical, chemical, and microscopic examination for UTI, protein leak, kidney stones, and glucose presence.',
+    parametersCount: 18,
+    popular: true
+  },
+  {
+    id: 'test-dengue',
+    name: 'Dengue NS1 Antigen + IgG/IgM',
+    category: 'infections',
+    price: 1200,
+    originalPrice: 1800,
+    sampleType: 'Blood (Serum)',
+    fastingRequired: false,
+    turnaroundTime: '4 - 6 Hours',
+    description: 'Rapid immuno-chromatographic detection of acute dengue infection (NS1) and antibodies (IgG/IgM) with platelet correlation.',
+    parametersCount: 3,
+    popular: true
+  },
+  {
+    id: 'test-ecg',
+    name: '12-Lead Resting ECG',
+    category: 'imaging',
+    price: 400,
+    originalPrice: 600,
+    sampleType: 'In-Lab Diagnostic',
+    fastingRequired: false,
+    turnaroundTime: 'Instant / 15 Mins',
+    description: 'High-definition 12-channel electrocardiography reviewed by consulting cardiologist with Free Doctor Consultation.',
+    parametersCount: 1,
     popular: true
   },
   {
@@ -64,33 +191,6 @@ export const DIAGNOSTIC_TESTS: DiagnosticTest[] = [
     popular: true
   },
   {
-    id: 'test-thyroid',
-    name: 'Thyroid Profile Total (T3, T4, TSH)',
-    category: 'hormones',
-    price: 500,
-    originalPrice: 850,
-    sampleType: 'Blood (Serum)',
-    fastingRequired: true,
-    fastingHours: 8,
-    turnaroundTime: '6 - 8 Hours',
-    description: 'High-sensitivity chemiluminescence immunoassay for thyroid gland function, metabolism, and weight regulation.',
-    parametersCount: 3,
-    popular: true
-  },
-  {
-    id: 'test-hba1c',
-    name: 'HbA1c (Glycated Hemoglobin)',
-    category: 'diabetes',
-    price: 450,
-    originalPrice: 700,
-    sampleType: 'Blood (EDTA tube)',
-    fastingRequired: false,
-    turnaroundTime: '4 - 6 Hours',
-    description: 'Gold standard HPLC method assessing average 3-month blood glucose control with estimated Average Glucose (eAG).',
-    parametersCount: 2,
-    popular: true
-  },
-  {
     id: 'test-fbs',
     name: 'Fasting Blood Sugar (FBS / PPBS)',
     category: 'diabetes',
@@ -102,84 +202,6 @@ export const DIAGNOSTIC_TESTS: DiagnosticTest[] = [
     turnaroundTime: '3 - 5 Hours',
     description: 'Direct enzymatic glucose test for immediate detection and monitoring of prediabetes and diabetes mellitus.',
     parametersCount: 1
-  },
-  {
-    id: 'test-lft',
-    name: 'Liver Function Test (LFT Complete)',
-    category: 'biochemistry',
-    price: 700,
-    originalPrice: 1100,
-    sampleType: 'Blood (Serum)',
-    fastingRequired: true,
-    fastingHours: 8,
-    turnaroundTime: '6 - 8 Hours',
-    description: 'SGOT, SGPT, Bilirubin Total/Direct/Indirect, Alkaline Phosphatase, Total Protein, Albumin, Globulin & A/G Ratio.',
-    parametersCount: 11,
-    popular: true
-  },
-  {
-    id: 'test-kft',
-    name: 'Kidney Function Test (KFT / RFT)',
-    category: 'biochemistry',
-    price: 650,
-    originalPrice: 1050,
-    sampleType: 'Blood (Serum)',
-    fastingRequired: false,
-    turnaroundTime: '6 - 8 Hours',
-    description: 'Urea, Blood Urea Nitrogen, Serum Creatinine, Uric Acid, Calcium, and Phosphorus with eGFR calculation.',
-    parametersCount: 7,
-    popular: true
-  },
-  {
-    id: 'test-vitd',
-    name: 'Vitamin D 25-Hydroxy',
-    category: 'vitamins',
-    price: 999,
-    originalPrice: 1600,
-    sampleType: 'Blood (Serum)',
-    fastingRequired: false,
-    turnaroundTime: '12 - 24 Hours',
-    description: 'Quantitative measurement of 25-OH Vitamin D for bone density, calcium metabolism, and immunity evaluation.',
-    parametersCount: 1,
-    popular: true
-  },
-  {
-    id: 'test-vitb12',
-    name: 'Vitamin B12 (Cyanocobalamin)',
-    category: 'vitamins',
-    price: 850,
-    originalPrice: 1400,
-    sampleType: 'Blood (Serum)',
-    fastingRequired: true,
-    fastingHours: 8,
-    turnaroundTime: '12 - 24 Hours',
-    description: 'Chemiluminescent assay assessing nerve function, cognitive health, fatigue levels, and red cell synthesis.',
-    parametersCount: 1,
-    popular: true
-  },
-  {
-    id: 'test-urine',
-    name: 'Urine Routine & Microscopy',
-    category: 'hematology',
-    price: 200,
-    originalPrice: 350,
-    sampleType: 'Fresh Midstream Urine',
-    fastingRequired: false,
-    turnaroundTime: '4 - 6 Hours',
-    description: 'Physical, chemical, and microscopic examination for UTI, protein leak, kidney stones, and glucose presence.',
-    parametersCount: 18
-  },
-  {
-    id: 'test-dengue',
-    name: 'Dengue Duo (NS1 Antigen + IgG/IgM)',
-    category: 'infections',
-    price: 900,
-    originalPrice: 1400,
-    sampleType: 'Blood (Serum)',
-    fastingRequired: false,
-    turnaroundTime: '4 - 6 Hours',
-    description: 'Rapid immuno-chromatographic detection of acute dengue infection and antibodies with platelet correlation.',
-    parametersCount: 3
   },
   {
     id: 'test-iron',
@@ -205,18 +227,6 @@ export const DIAGNOSTIC_TESTS: DiagnosticTest[] = [
     turnaroundTime: '4 - 6 Hours',
     description: 'Ion-selective electrode measurement of sodium, potassium, and chloride for fluid balance and blood pressure.',
     parametersCount: 3
-  },
-  {
-    id: 'test-ecg',
-    name: '12-Lead Resting ECG',
-    category: 'imaging',
-    price: 300,
-    originalPrice: 500,
-    sampleType: 'In-Lab Diagnostic',
-    fastingRequired: false,
-    turnaroundTime: 'Instant / 15 Mins',
-    description: 'High-definition 12-channel electrocardiography reviewed by consulting cardiologist for rhythm analysis.',
-    parametersCount: 1
   }
 ];
 
@@ -295,27 +305,39 @@ export const INFECTION_SHIELD: ServiceItem[] = [
 export const IMAGING_SERVICES = [
   {
     id: 'img1',
-    title: 'Digital X-Ray (High Res)',
-    desc: 'High-resolution low-radiation digital radiography for chest, bones, joints, and spine.',
-    icon: Bone,
-  },
-  {
-    id: 'img2',
-    title: 'Ultrasound / Sonography',
-    desc: 'Advanced ultrasound for whole abdomen, pelvis, KUB, thyroid, and obstetrics.',
+    title: '4D Ultra Sound & Sonography',
+    desc: 'Advanced 4D high-definition ultrasound for whole abdomen, pelvis, KUB, thyroid, and obstetrics.',
     icon: Activity,
   },
   {
+    id: 'img2',
+    title: 'Digital X-Ray (High Resolution)',
+    desc: 'A.E.R.B. Approved low-radiation digital radiography for chest, bones, joints, and spine.',
+    icon: Bone,
+  },
+  {
     id: 'img3',
-    title: '12-Lead Computerized ECG',
-    desc: 'Immediate resting electrocardiogram evaluated for arrhythmias and ischemic changes.',
+    title: '2D-Echo & Stress Echo',
+    desc: 'Comprehensive cardiac ultrasound, 2D Echocardiography and Stress Echo for heart function.',
     icon: HeartPulse,
   },
   {
     id: 'img4',
-    title: 'CT & MRI Network Support',
-    desc: 'Seamless appointment facilitation with certified imaging centers at discounted rates.',
-    icon: BrainCircuit,
+    title: 'TMT & PFT (Treadmill & Pulmonary)',
+    desc: 'TMT cardiac stress test and computerized Pulmonary Function Test (PFT) for lung capacity.',
+    icon: Zap,
+  },
+  {
+    id: 'img5',
+    title: '12-Lead Computerized ECG',
+    desc: 'Immediate resting 12-channel electrocardiogram evaluated by cardiologist for rhythm analysis.',
+    icon: HeartPulse,
+  },
+  {
+    id: 'img6',
+    title: 'Fully Automatic Blood Lab',
+    desc: 'Govt. of NCT Delhi approved fully automatic clinical lab for all routine and advanced tests.',
+    icon: Microscope,
   },
 ];
 
@@ -337,7 +359,8 @@ export const PACKAGES: PackageItem[] = [
       'Lipid Profile (Cholesterol, Triglycerides, HDL, LDL)',
       'Kidney Function (Urea, Creatinine, Uric Acid)',
       'Liver Screen (SGOT, SGPT, Bilirubin)',
-      'Urine Routine & Microscopic (18 Parameters)'
+      'Urine Routine & Microscopic (18 Parameters)',
+      'Free Doctor Report Consultation'
     ],
   },
   {
@@ -358,13 +381,14 @@ export const PACKAGES: PackageItem[] = [
       'Complete Lipid Profile (8 Parameters)',
       'Thyroid Profile (T3, T4, TSH Ultrasensitive)',
       'HbA1c & Fasting Blood Sugar (Diabetes Screen)',
-      'Vitamin D (25-OH) & Vitamin B12 Assay',
-      'Urine Routine & Automated Microscopic'
+      'Vitamin D3 (25-OH) & Vitamin B12 Assay',
+      'Urine Routine & Automated Microscopic',
+      'Free Doctor Report Consultation'
     ],
   },
   {
     id: 'pkg3',
-    name: 'SENIOR CITIZEN COMPREHENSIVE',
+    name: 'SENIOR CITIZEN PACKAGE',
     testsIncluded: 98,
     price: '₹2,999',
     priceNumber: 2999,
@@ -380,7 +404,7 @@ export const PACKAGES: PackageItem[] = [
       'Serum Ferritin & Iron Deficiency Profile',
       'Uric Acid (Gout & Joint Pain Evaluation)',
       'Prostate Screen (PSA for Men) / Hormone Check',
-      'Free Doctor Report Consultation on WhatsApp'
+      'Free Doctor Report Consultation'
     ],
   },
 ];
@@ -490,7 +514,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
 export const FAQS = [
   {
     q: 'How do I book a home sample collection with Sun Life Path Lab?',
-    a: 'You can easily book online by clicking "Book Home Visit", selecting your tests, or sending your prescription directly on WhatsApp to +91 98765 43210. Our team confirms your time slot within minutes.'
+    a: 'You can easily book online by clicking "Book Home Visit", selecting your tests, or sending your prescription directly on WhatsApp to +91 93109 28533. Our team confirms your time slot within minutes.'
   },
   {
     q: 'Are the home sample collection phlebotomists certified and safe?',
@@ -498,7 +522,11 @@ export const FAQS = [
   },
   {
     q: 'When will I receive my test reports?',
-    a: 'Routine blood tests (CBC, Sugar, Thyroid, LFT, KFT, Lipid) are delivered within 4 to 8 hours on the same day. Specialized assays (Vitamins, Hormones) are reported within 12 to 24 hours via WhatsApp & Email.'
+    a: 'Routine blood tests (CBC, Sugar, Thyroid, LFT, KFT, Lipid, Urine) are delivered within 4 to 8 hours on the same day. Specialized assays (Vitamins, Hormones) are reported within 12 to 24 hours via WhatsApp & Email.'
+  },
+  {
+    q: 'Is Doctor Report Consultation really free?',
+    a: 'Yes! Every test and health package booking includes a 100% Free Doctor Report Consultation on WhatsApp or call to help you clearly understand your results and next steps.'
   },
   {
     q: 'Can I upload my doctor\'s prescription instead of choosing individual tests?',
